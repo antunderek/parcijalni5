@@ -125,9 +125,9 @@ class TodosController extends Controller
     {
         //
         $todoDelete = Todo::find($id);
-        //if (($todoDelete === null) || !$this->checkIfOwner($todo)) {
-         //   return abort(404);
-        //}
+        if (($todoDelete === null) || !$this->checkIfOwner($todo)) {
+           return abort(404);
+        }
         $todoDelete->delete();
         return redirect()->route('todo.index');
     }
